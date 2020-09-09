@@ -1,28 +1,280 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GUAIA2 | 就是个博客</title><meta name="description" content="Vocabulary:Lounge: &#x2F;laʊndʒ&#x2F; 休息室| 闲逛,虚度光阴 Poetry: &#x2F;poʊətri&#x2F; 诗；诗意 Offered: &#x2F; ‘ɔfəd&#x2F; 提供（offer过去时态）|提供的 Waistcoat: &#x2F;ˈweɪskoʊt&#x2F; . 背心 Punctual: &#x2F;ˈpʌŋktʃuəl&#x2F; adj. 准时的，守时的 Purposeful: &#x2F;ˈpɜːrpəsfl&#x2F; 有决心的 Well a"><meta name="keywords" content="Growing up Asian in Australia"><meta name="author" content="Tong"><meta name="copyright" content="Tong"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/09/08/GUAIA2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="GUAIA2"><meta property="og:url" content="http://example.com/2020/09/08/GUAIA2/"><meta property="og:site_name" content="就是个博客"><meta property="og:description" content="Vocabulary:Lounge: &#x2F;laʊndʒ&#x2F; 休息室| 闲逛,虚度光阴 Poetry: &#x2F;poʊətri&#x2F; 诗；诗意 Offered: &#x2F; ‘ɔfəd&#x2F; 提供（offer过去时态）|提供的 Waistcoat: &#x2F;ˈweɪskoʊt&#x2F; . 背心 Punctual: &#x2F;ˈpʌŋktʃuəl&#x2F; adj. 准时的，守时的 Purposeful: &#x2F;ˈpɜːrpəsfl&#x2F; 有决心的 Well a"><meta property="og:image" content="http://example.com/null"><meta property="article:published_time" content="2020-09-08T08:58:18.000Z"><meta property="article:modified_time" content="2020-09-08T23:51:40.560Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.1.1',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"刚刚","hours":"小时前","day":"天前"},
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
 
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache:theme.fragment_cache})
-      
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-09-09 09:51:40'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.1.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">2</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">1</div></a></div></div></div><hr/></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vocabulary"><span class="toc-number">1.</span> <span class="toc-text">Vocabulary:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%84%9F%E5%8F%97%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">感受：</span></a></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">就是个博客</a></span><span id="menus"><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">GUAIA2</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-08T08:58:18.000Z" title="发表于 2020-09-08 18:58:18">2020-09-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-09-08T23:51:40.560Z" title="更新于 2020-09-09 09:51:40">2020-09-09</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="Vocabulary"><a href="#Vocabulary" class="headerlink" title="Vocabulary:"></a>Vocabulary:</h2><p>Lounge: /laʊndʒ/ 休息室| 闲逛,虚度光阴</p>
+<p>Poetry: /poʊətri/ 诗；诗意</p>
+<p>Offered: / ‘ɔfəd/ 提供（offer过去时态）|提供的</p>
+<p>Waistcoat: /ˈweɪskoʊt/ . 背心</p>
+<p>Punctual: /ˈpʌŋktʃuəl/ adj. 准时的，守时的</p>
+<p>Purposeful: /ˈpɜːrpəsfl/ 有决心的</p>
+<p>Well after dark:</p>
+<p>Bush: /bʊʃ/  灌木|v.丛生|如灌木般长得低矮的；粗野的</p>
+<p>Timber: /tɪmbər/ 木材；木料</p>
+<p>Ford Falcon: 福特猎鹰（某车）</p>
+<p>Pakistani:巴基斯坦人</p>
+<p>Stumbling:/ˈstʌmblɪŋ/ 障碍的</p>
+<p>Trickle of Blood: /ˈtrɪkl/ 滴</p>
+<p>Rinsing: /ˈrɪnsɪŋ/ 清水,冲洗</p>
+<p>Scrape: /skreɪp/ 刮掉；擦伤</p>
+<p>Goofy: /ˈɡuːfi/傻瓜的</p>
+<p>Instinctively: /ɪnˈstɪŋktɪvli/ 本能地</p>
+<p>Steer: /stɪr/ 控制，引导</p>
+<p>Back on course: </p>
+<p>Tumour:/ˈtuːmər/ 肿瘤</p>
+<p>Funeral:/fjuːnərəl/ . 葬礼</p>
+<p>Overshadowed: /oʊvərˈʃædoʊ/使失色；使蒙上阴影</p>
+<p>Complimented:/kɑːmplɪmənt/ n/v  恭维；称赞</p>
+<p>Department:</p>
+<p>Squeaky:/ˈskwiːki/ 嘎吱作响的</p>
+<p>Escapes:</p>
+<p>Muncher:/mangcher/ 大声咀嚼</p>
+<p>Towel: /ˈtaʊəl/n. 毛巾，手巾</p>
+<p>Abo:/ˈæboʊ/对澳大利亚土著的蔑称</p>
+<p>Coon: /kuːn/浣熊；黑人</p>
+<p>Boong: /bu:ŋ/原住民 骂人的🤬</p>
+<p>Darkie: /‘dɑ:ki/ 轻蔑黑人的称呼</p>
+<p>Nig-nog:查不到</p>
+<p>Golliwog:/ˈɡɒliwɒɡ/  怪物</p>
+<p>Thunk-up:/θʌŋk/  形实转换程序??????</p>
+<p>Epithet: /ˈepɪθet/  绰号</p>
+<p>Chinese-burn: ??</p>
+<p>Dead-Leg: 小腿受伤</p>
+<p>Skeletons:/ˈskelɪtn/  骨骼</p>
+<p>Irritating:/ˈɪrɪteɪtɪŋ/  刺激的；气人的|刺激；激怒(好难读)</p>
+<p>Wincing: /wɪns/畏缩</p>
+<p>Affectionately:/əˈfekʃənətli/ 亲切地；挚爱地</p>
+<p>Senile: /ˈsiːnaɪl/  高龄的；老衰的</p>
+<p>Rupees: 卢比</p>
+<p>Dontcha:查不到</p>
+<p>Yell:/jel/ 大叫，叫喊[和Yo 读起来好像]</p>
+<p>Chuckle: /ˈtʃʌkl/ 咯咯的笑|轻笑</p>
+<p>Orf:/ɔːf/ 羊痘疮</p>
+<p>Scrubbing: /ˈskrʌbɪŋ/ 洗涤|用力擦洗（scrub的现在分词）</p>
+<p>Into sink:洗涤槽，水槽；洼地；污水坑</p>
+<p>Afterwards: 后来</p>
+<p>Consolation: /kɑːnsəˈleɪʃn/ 安慰；慰问</p>
+<p>Rubbing:/ˈrʌbɪŋ/ n/v  摩擦 (rub的ing形式)</p>
+<p>Stingy: /ˈstɪndʒi/ 吝啬的，小气的</p>
+<p>Underneath: /ˌʌndərˈniːθ/ 下面，底部</p>
+<p>Run off with: 偷走</p>
+<p>Bated: /ˈbeɪtɪd/ 除去的；减去的|  压制（bate的过去分词）</p>
+<p>Vulgar:  /ˈvʌlɡər/ 粗俗的；通俗的；本土的| 平民，百姓</p>
+<p>Flared:/flerd/向外展开的|闪光（flare的过去式）</p>
+<p>Trousers:/ˈtraʊzərz/ 裤子，长裤</p>
+<p>Wardrobe:/ˈwɔːrdroʊb/ 衣柜；行头</p>
+<p>Watery: /ˈwɔːtəri/ 水的；淡的；湿的</p>
+<p>Clive: 人名</p>
+<p>Dhal: /dɑ:l/ 木豆；木豆做的菜</p>
+<p>Stank: /stæŋk/ 池塘；水沟；小水坝|发出恶臭（stink的过去式</p>
+<p>Formidable: /fɔːrmɪdəbl/ adj. 强大的；可怕的</p>
+<p>Pathological: /pæθəˈlɑːdʒɪkl/  病理学的；病态的</p>
+<p>Neat: /nit/ 灵巧的；整洁的；优雅的</p>
+<p>Pastel: /pæˈstel/ 彩色粉笔，蜡笔|淡的，柔和的</p>
+<p>Reeking: /‘rikiŋ/ 薰烟黑|散发臭气</p>
+<p>Spray: /spreɪ/ 喷雾，喷雾剂</p>
+<p>Redolent: 使人想到，使人联想起</p>
+<p>Trinity: /ˈtrɪnəti/ 三位一体</p>
+<p>Jostles: /ˈdʒɑːsl/ 推挤，撞；争夺</p>
+<p>Brahma: /‘brɑ:mə/ 梵天</p>
+<p>Vishnu: /vɪʃnu/ 毗瑟挐</p>
+<p>Shiva: /‘ʃivə/ 七日服丧期</p>
+<p>Asafoetida: /,æsə’fetidə/ 读不读不重要了。 阿魏（药用植物）</p>
+<p>Cumin:/kjuːmɪn/ 小茴香， Coming？</p>
+<p>Incense: /ɪnsens/  香；奉承</p>
+<p>Clique: /kliːk/  派系；阀；私党</p>
+<p>Saris: 印度妇女穿的</p>
+<p>Practitioners: /præk’tɪʃənɚ/  实践者；开业者</p>
+<p>Interminable: /ɪnˈtɜːrmɪnəbl/冗长的；无止尽的</p>
+<p>Buckets: /ˈbʌkɪt/  桶，水桶｜倾盆而下 （读音像巴嘎）</p>
+<p>Banker:</p>
+<p>Acrid: /ækrɪd/ 辛辣的，苦的</p>
+<p>Cigars: /sɪˈɡɑːr/ 雪茄就是和Cigarette不一样啊</p>
+<p>Bawdy:/ˈbɔːdi/  猥亵的；下流的 (和Body 有区别？？)</p>
+<p>Deft: /deft/ 灵巧的；机敏的</p>
+<p>Bangles: /ˈbæŋɡl/ 不加s：手镯；脚镯｜｜加s：手镯合唱团</p>
+<p>Jangling: /dʒæŋɡlɪŋ/  使发出叮当声；使争论（jangle 的现在分词）</p>
+<p>Flinging:/flɪŋ/  掷，抛；嘲笑</p>
+<p>Nuggets: /ˈnʌɡɪts/天然金块，矿块 |丹佛掘金</p>
+<p>Swelled: /sweld/ 骄傲自大；自负的|膨胀；隆起；增大（swell的过去分词）</p>
+<p>Balloons: /bəˈluːnz/ 气球；轻气球</p>
+<p>Frantically:/ˈfræntɪkli/  疯狂似地；狂暴地</p>
+<p>Masala:马沙拉</p>
+<p>Ortho: /ˈɔːrθoʊ/ 正色性的</p>
+<p>Cardio: /ˈkɑːrdioʊ/ 有氧运动</p>
+<p>Clucking: /klʌk/ 咯咯叫|笨蛋</p>
+<p>Wheatish: 查不到</p>
+<p>Lotus:/ˈloʊtəs/ 莲花；荷花</p>
+<p>Flower-Power babies:</p>
+<p>Wok: /wɑːk/ 锅</p>
+<p>Puri:/ˈpuːri/普里小麦饼</p>
+<p>Flakes: /fleɪks/ 麦片；鳞片</p>
+<p>Dodging:/ ˈdɑːdʒɪŋ/ 避开；逃避</p>
+<p>Grinding: /ˈɡraɪndɪŋ/ 无休止的</p>
+<p>Pinch: /pɪntʃ/ 捏；夹紧</p>
+<p>Pappadums:</p>
+<p>Chaklis:</p>
+<p>Crunchy: /ˈkrʌntʃi/ 易碎的</p>
+<p>Chickpea: /tʃɪkpi/ 鹰嘴豆</p>
+<p>Unintelligible: /ʌnɪnˈtelɪdʒəbl/  莫名其妙的；无法了解的</p>
+<p>Chatter: 唠叨；喋喋不休</p>
+<p>Strictly: /ˈstrɪktli/ 严格的</p>
+<p>Vegetarian:</p>
+<p>Balgis:</p>
+<p>Astronaunt: /æstrənɔːt/ </p>
+<p>Cursive:/ˈkɜːrsɪv/  草书的；草书体的</p>
+<p>Cricket: /ˈkrɪkɪt/  板球，板球运动</p>
+<p>Twisting: /ˈtwɪstɪŋ/ n诱骗；快速扭转，缠绕｜使弯曲；（使）弯曲变形</p>
+<p>Venkateshwara:</p>
+<p>Bhajjans:</p>
+<p>Belted: /ˈbeltɪd/ 佩礼带的；束带的；装甲的|系上腰带；用带系上（belt的过去分词）</p>
+<p>Fasten safety belt, belt up</p>
+<p>Shelter:</p>
+<p>Sheds: /ʃedz/ 棚屋</p>
+<p>Cropper: /ˈkrɑːpər/ 种植者；农作物，收割机；修剪机</p>
+<p>Shoosh:</p>
+<p>Rear（后面）-view mirror: 后视镜</p>
+<p>Scrambling: /ˈskræmblɪŋ/ . 攀登；快速移动</p>
+<p>Curds: [食品] 凝乳</p>
+<p>Burst: /bɜːrst/ 爆炸；戳破；爆裂</p>
+<p>Spat: /spæt/ 口角，一巴掌打去</p>
+<p>Stringy: /strɪŋi/ 绳的；纤维的</p>
+<p>Yellow tips of glass:</p>
+<p>Unmowed:</p>
+<p>Peeking:/ˈpiːkɪŋ/窥视</p>
+<p>Weedy:/ˈwiːdi/ 瘦弱的；似杂草的</p>
+<p>Ruins:/ˈruːɪnz/遗迹｜毁灭</p>
+<p>Snuck: /snʌk/潜行( sneak的过去式和过去分词 )</p>
+<p>Snatches: /ˈsnætʃɪz/ 一阵</p>
+<p>Pinchy:</p>
+<p>Unkempt:/ˌʌnˈkempt/ 蓬乱的，不整洁的</p>
+<p>Draped: /dreɪpt/ 垂褶袖；打褶形</p>
+<p>Leopard: /ˈlepərd/  豹；美洲豹</p>
+<p>Writhing:/ˈraɪðɪŋ/  翻滚，打滚</p>
+<p>Turbulent: /ˈtɜːrbjələnt/ 动荡的；湍流的</p>
+<p>Worship: /ˈwɜːrʃɪp/ n/v 崇拜；礼拜；尊敬</p>
+<p>Mischief:/ˈmɪstʃɪf/  恶作剧；伤害</p>
+<p>Muttered: /ˈmʌtər/ 咕哝；喃喃自语</p>
+<p>Thigh: /θaɪ/ 大腿，股</p>
+<p>Triumphant: /traɪˈʌmfənt/ 成功的；得意洋洋的；狂欢的</p>
+<p>Contemptuous:/ kənˈtemptʃuəs/ 轻蔑的；侮辱的</p>
+<p>Chakli:</p>
+<h2 id="感受："><a href="#感受：" class="headerlink" title="感受："></a>感受：</h2><p>太多了，我累了。</p>
+<p>博客想放弃了，第二天，读了7页。</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Tong</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/09/08/GUAIA2/">http://example.com/2020/09/08/GUAIA2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">就是个博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Growing-up-Asian-in-Australia/">Growing up Asian in Australia</a></div><div class="post_share"><div class="social-share" data-image="/null" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/09/07/GUAIA1/"><img class="next-cover" src="/" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">GUAIA1</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/09/07/GUAIA1/" title="GUAIA1"><img class="cover" src="/"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-09-07</div><div class="title">GUAIA1</div></div></a></div></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Tong</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
