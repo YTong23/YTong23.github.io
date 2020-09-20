@@ -287,7 +287,9 @@
   <entry>
     <title>拖更</title>
     <url>/2020/09/09/%E6%8B%96%E6%9B%B4/</url>
-    <content><![CDATA[<h2 id="今天不更："><a href="#今天不更：" class="headerlink" title="今天不更："></a>今天不更：</h2><p>烦死了</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="今天不更："><a href="#今天不更：" class="headerlink" title="今天不更："></a>今天不更：</h2><p>没时间了</p>
+<p>听歌</p>
+<p><audio src="/Users/tongyang/Downloads/Love Story - Taylor Swift _ Live In 1989 World Tour (Lyric+Vietsub) _ MV Live.mp3"></audio></p>
 ]]></content>
       <categories>
         <category>Announcement</category>
